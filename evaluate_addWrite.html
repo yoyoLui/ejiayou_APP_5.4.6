@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>支付评价</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="https://img.ejiayou.com/wxmp/zepto.min.js"></script>
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <div class="containerDiv" id="containerDiv">
+        <div class="evaluateResults" id="evaluateResults">
+            <img src="img/tag.png"></img>
+            <div>
+            </div>
+        </div>
+        <div class="evaluateQuestion" id="evaluateQuestion">
+           
+        </div>
+        <div class="evaluateQuestion evaluateQuestion_Oil" id="evaluateQuestion_Oil">
+           
+        </div>
+        <div class="evaluateContent" id="evaluateContent">
+        
+        </div>
+        <div class="evaluateElse">
+            <textarea placeholder="其他想说的（将匿名并延迟发布）"></textarea>
+        </div>
+        <div class="button" disabled>提交</div>
+    </div>
+</body>
+<script>
+var _getPoint=[];
+var _all_point=[];
+var _comment;
+var textarea = document.querySelector('textarea');
+var button = document.querySelector('.button');
+var _selectPoint=[];
+var json ;
+json={
+ "code":200,
+"message":"查询成功",
+ "data":{
+	"stationId":"65",	
+	"commentDetail":{
+		"commentList":[
+			{
+				"appendConent":" 么鬼啊",
+				"appendTitle":"追加评价:",
+				"evaluateId":1,
+				"type":3
+			},
+			{
+				"appendConent":"鬼啊",
+				"appendTitle":"追加评价:",
+				"evaluateId":2,
+				"type":3
+			},
+			{
+				"appendConent":"讲文明树新风",
+				"appendTitle":"小易回复:",
+				"evaluateId":3,
+				"type":4
+			}
+		],
+		"commentTime":"5月3日",
+		"content":"什么鬼啊",
+		"headUrl":"img/bad_small_grey.png",
+		"nickName":"小胖"
+	},
+	"commentList":[
+		{
+			"questionId":"1",
+			"typeName":"服务",
+			"questionComment":"一般"
+		},
+		{
+			"questionId":"1",
+			"typeName":"服务",
+			"questionComment":"一般"
+		},
+		{
+			"questionId":"1",
+			"typeName":"服务",
+			"questionComment":"一般"
+		},
+		{
+			"questionId":"1",
+			"typeName":"服务",
+			"questionComment":"一般"
+		},
+		{
+			"questionId":"1",
+			"typeName":"服务",
+			"questionComment":"一般"
+		},
+	],
+	"unCommentList":[
+		{
+			"gradeList":[
+				{
+					"grade":"5",
+					"gradeName":"较好"
+				},
+				{
+					"grade":"3",
+					"gradeName":"一般"
+				},
+				{
+					"grade":"1",
+					"gradeName":"较差"
+				}
+			],
+			"questionId":"2",
+			"type":"2",
+			"typeName":"环境"
+		},
+		{
+			"gradeList":[
+				{
+					"grade":"5",
+					"gradeName":"较好"
+				},
+				{
+					"grade":"3",
+					"gradeName":"一般"
+				},
+				{
+					"grade":"1",
+					"gradeName":"不太好找"
+				}
+			],
+			"questionId":"3",
+			"type":"3",
+			"typeName":"位置"
+		},
+		{
+			"gradeList":[
+
+				{
+					"grade":"5",
+					"gradeName":"较好"
+				},
+				{
+					"grade":"3",
+					"gradeName":"一般"
+				},
+				{
+					"grade":"1",
+					"gradeName":"不太好找"
+				},
+				{
+					"grade":"0",
+					"gradeName":"无法判断"
+				}
+			],
+			"questionId":"4",
+			"type":"4",
+			"typeName":"油品"
+		}
+	]
+}
+};
+
+function eachJsonToAppend(){
+		//append评论详情列表
+		var commentDetail=json.data.commentDetail;
+		if(commentDetail){
+			$('#evaluateContent').show();
+			$('#evaluateContent').append('<img src='+commentDetail.headUrl+' class="userHead"></img>'
+	            +'<div class="content" id="commentDetail">'
+	               +'<div class="userName"><span>'+commentDetail.nickName+'</span><span>'+commentDetail.commentTime+'</span></div>' 
+	                +'<div class="contentWord">'+commentDetail.content
+	                +'</div>'
+	            +'</div>');
+			$.each(commentDetail.commentList,function(childI,childObj){
+				$('#commentDetail').show();
+				$('#commentDetail').append(' <div class="contentReply">'+childObj.appendTitle+childObj.appendConent+'</div>');
+			})
+		}
+
+	    //append已选问题
+		$.each(json.data.commentList, function(i, obj) {
+		    $('#evaluateResults').show();
+		    $('#evaluateResults>div').append('<div class="evaluateResults_item" id=' + obj.questionId + '>' + obj.typeName + ':<span class="orange">&nbsp;&nbsp;' + obj.questionComment + '</span></div>');
+		});
+		//append评论选项
+		$.each(json.data.unCommentList, function(i, obj) {
+			$('#evaluateQuestion').show();
+			_getPoint.push(obj.type);
+			var html=' <div class="evaluateQuestion_item" data-type='+obj.type+' >'
+				           +'<div class="evaluateQuestion_item_head" value='+obj.type+'>'+obj.typeName+'：</div>' 
+				           +' <div class="evaluateQuestion_item_option">'
+				               +'<table>' 
+				                    +'<td class="evaluateQuestion_item_option_item" data-type='+obj.type+' onclick="tdClick(this)">'
+				                       +'<input type="radio" name='+obj.type+' value='+obj.type+'-'+obj.gradeList[0].grade+' id='+obj.type+'-'+obj.gradeList[0].grade+'>' 
+				                       +'<label class="ImgParentSpan" for='+obj.type+'-'+obj.gradeList[0].grade+'>' 
+				                          +'<label class="goodImg" for='+obj.type+'-'+obj.gradeList[0].grade+'></label>'  
+				                       +' </label>'
+				                      +' <label for="radio_1" >'+obj.gradeList[0].gradeName+'</label>' 
+				                  +' </td>' 
+				                    +'<td class="evaluateQuestion_item_option_item" data-type='+obj.type+' onclick="tdClick(this)">'
+				                       +'<input type="radio" name='+obj.type+' value='+obj.type+'-'+obj.gradeList[1].grade+' id='+obj.type+'-'+obj.gradeList[1].grade+'>' 
+				                       +'<label class="ImgParentSpan" for='+obj.type+'-'+obj.gradeList[1].grade+'>' 
+				                          +'<label class="goodImg" for='+obj.type+'-'+obj.gradeList[1].grade+'></label>'  
+				                       +' </label>'
+				                      +' <label for="radio_1" >'+obj.gradeList[1].gradeName+'</label>' 
+				                  +' </td>' 
+				                    +'<td class="evaluateQuestion_item_option_item" data-type='+obj.type+' onclick="tdClick(this)">'
+				                       +'<input type="radio" name='+obj.type+' value='+obj.type+'-'+obj.gradeList[2].grade+' id='+obj.type+'-'+obj.gradeList[2].grade+'>' 
+				                       +'<label class="ImgParentSpan" for='+obj.type+'-'+obj.gradeList[2].grade+'>' 
+				                          +'<label class="goodImg" for='+obj.type+'-'+obj.gradeList[2].grade+'></label>'  
+				                       +' </label>'
+				                      +' <label for="radio_1" >'+obj.gradeList[2].gradeName+'</label>' 
+				                  +' </td>' 
+				                +'</table>'
+				           +'</div>'
+				       +'</div>' ;
+			if(parseInt(obj.type)!=4){
+				$('#evaluateQuestion').append(html);
+			}else{
+				$('#evaluateQuestion_Oil').show();
+				$('#evaluateQuestion_Oil').append(html);
+				$('#evaluateQuestion_Oil table tr').append('<td class="evaluateQuestion_item_option_item" data-type='+obj.type+' onclick="tdClick(this)">'
+					                       +'<input type="radio" name='+obj.type+' value='+obj.type+'-'+obj.gradeList[3].grade+' id='+obj.type+'-'+obj.gradeList[3].grade+'>' 
+					                       +'<label class="ImgParentSpan" for='+obj.type+'-'+obj.gradeList[3].grade+'>' 
+					                          +'<label class="unknownImg" for='+obj.type+'-'+obj.gradeList[3].grade+'></label>'  
+					                       +' </label>'
+					                      +' <label for="radio_1" >'+obj.gradeList[3].gradeName+'</label>' 
+					                  +' </td>' );
+			}
+		});
+}
+
+// 遍历radio，添加id到_all_points
+function pushPointToArr(name) {
+	var radioArr = document.getElementsByName(name);   
+	 for(var i=0;i<radioArr.length;i++){   
+		 if(radioArr[i].checked){   
+		 	_all_point.push(radioArr[i].value);
+	 	}   
+	 }   
+}
+
+// 提交动作前，采集参数
+function collectParams() {
+	$.each(json.data.unCommentList,function (i,obj) {
+		pushPointToArr(obj.type);
+	});
+	_comment=textarea.value;
+}
+
+function  ajaxSubmitData(){
+	collectParams();
+   //   $.ajax({
+   //      url: "http://dev.ejiayou.com/v1/evaluate/commitEvaluation.do",
+   //      type: "POST",
+   //      data: {
+   //          all_point:"1-1,2-3,3-4",
+			// type:1,                     //是否为第一次评论，是为1，否则为2
+			// comment:'不错不错',
+			// order_id:1000000000236946 ,
+			// osType:3,
+			// userId:1005020,
+			// versionId:'1.0.0',
+			// carType:3
+   //      },
+   //      success: function(data) {
+			
+   //      }
+   //  });
+
+}
+
+function ajaxGetAllCommentList() {
+	/**
+	 $.ajax({
+        url: "https://dev.ejiayou.com/v1/evaluate/getAllCommentList.do",
+        type: "GET",
+        data: {
+			all_point:'1-1,2-3,3-4',
+			type:1,
+			comment:'不错不错',
+			order_id:9000000020007512,
+			osType:3,
+			userId:1005020,
+			versionId:'1.0.0',
+			carType:3
+        },
+        success: function(data) {
+			
+        }
+    });
+	 */
+	
+	eachJsonToAppend();
+}
+
+
+
+
+function isEquals(a, b) {
+    return JSON.stringify(a.sort()) === JSON.stringify(b.sort());
+}
+
+function tdClick($this){
+	var point=$this.dataset.type;
+	if(_selectPoint.indexOf(point)<0){
+		_selectPoint.push(point);
+		if(isEquals(_selectPoint,_getPoint)){
+ 			button.removeAttribute('disabled');
+		}else{
+			button.setAttribute('disabled', '');
+		}
+	}
+}
+
+$(document).ready(function() {
+	ajaxGetAllCommentList();
+	$('.button').click(function(){
+		if(!button.attributes.disabled){
+			ajaxSubmitData();
+		}
+	});
+})
+document.body.addEventListener('touchstart', function() {});
+
+</script>
+
+</html>

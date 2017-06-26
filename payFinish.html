@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>支付成功</title>
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="https://img.ejiayou.com/wxmp/zepto.min.js"></script>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <div class="containerDiv">
+        <div class="ejy-panel panel-Question" id="evaluateQuestionInfo">
+            
+        </div>
+    </div>
+</body>
+<script>
+var json = {
+    "code": 200,
+    "message": "查询成功",
+    "data": {
+        "evaluateQuestionInfo": {
+            "gradeList": [{
+                "grade": "5",
+                "gradeName": "满意"
+            }, {
+                "grade": "3",
+                "gradeName": "一般"
+            }, {
+                "grade": "1",
+                "gradeName": "不满意"
+            }, {
+                "grade": "0",
+                "gradeName": "无法判断"
+            }],
+            "questionDes": "您认为油站的位置如何",
+            "questionId": "2",
+            "type": "3",
+            "typeName": "位置"
+        },
+        "oilCode": "92#",
+        "oilMass": "100L",
+        "orderSum": "1000",
+        "paySum": "900",
+        "reduceSum": "100",
+        "stationId": "65",
+        "stationName": "会员卡测试油站"
+    }
+};
+var evaluateQuestionInfo = json.data.evaluateQuestionInfo;
+$('#evaluateQuestionInfo').show();
+$('#evaluateQuestionInfo').append(' <div class="pop_evaluateQuestion_item_question" id=' + evaluateQuestionInfo.questionId + '>' + evaluateQuestionInfo.questionDes + '</div>' + '<div class="pop_evaluateQuestion_item_option">' + '<div onclick="clickOptionToSubmit(this.id)" id=' + evaluateQuestionInfo.gradeList[0].grade + '>' + ' <div class="goodImg_Big"></div>' + ' <span >' + evaluateQuestionInfo.gradeList[0].gradeName + '</span>' + '</div>' + '<div onclick="clickOptionToSubmit(this.id)" id=' + evaluateQuestionInfo.gradeList[1].grade + '>' + '  <div class="normalImg_Big"></div>' + ' <span >' + evaluateQuestionInfo.gradeList[1].gradeName + '</span>' + '</div>' + '<div onclick="clickOptionToSubmit(this.id)" id=' + evaluateQuestionInfo.gradeList[2].grade + '>' + ' <div class="badImg_Big"></div>' + ' <span >' + evaluateQuestionInfo.gradeList[2].gradeName + '</span>' + '</div>' + ' </div>');
+if (parseInt(evaluateQuestionInfo.type) == 4) {
+    $('#evaluateQuestionInfo').append('<div class=" unknownToQuestion" >' + '<div class="unknownButton" onclick="clickOptionToSubmit(this.id)" id=' + evaluateQuestionInfo.gradeList[3].grade + '>' + evaluateQuestionInfo.gradeList[3].gradeName + '</div>' + '</div>');
+} else {
+   
+
+}
+
+function addCountToLocalstorage(station) {
+    $.each(stationStorage, function(i, obj) {
+        if (station == obj.stationId) {
+            obj.count++;
+            localStorage.stationStorage=JSON.stringify(stationStorage);//存入localstorage;
+        }
+    })
+}
+
+function addStationToLocalstorage(station) {
+    var addStation = {
+        stationId: station,
+        count: 1
+    }
+    stationStorage.push(addStation);
+    localStorage.stationStorage=JSON.stringify(stationStorage);//存入localstorage;
+}
+
+function submitToJudge(station) {
+    if (evaluateQuestionInfo.type == 3) { //某用户在某站评价位置
+        var _isExistStation = isExistStation(station);
+        if (_isExistStation) {
+            addCountToLocalstorage(station);
+        } else {
+            addStationToLocalstorage(station);
+        }
+    }
+}
+
+/*选项点击事件*/
+function clickOptionToSubmit(grade) {
+    alert(grade);
+    // $.ajax({
+    //     url: "http://dev.ejiayou.com/v1/evaluate/commitEvaluation.do",
+    //     type: "POST",
+    //     data: {
+    //         all_point: "3-1",
+    //         type: 1, //是否为第一次评论，是为1,否则为2(此页面写死为1)
+    //         comment: '不错不错',
+    //         order_id: 1000000000236946,
+    //         osType: 3,
+    //         userId: 1005020,
+    //         versionId: '1.0.0',
+    //         carType: 3
+    //     },
+    //     success: function(data) {
+    //         alert(JSON.stringify(data));
+
+    //     }
+    // });
+    submitToJudge(station);
+
+};
+
+// 模拟localstorage存储
+var stationStorage = [{
+    stationId: "555",
+    count: 3
+}, {
+    stationId: "2",
+    count: 3
+}, ];
+ localStorage.stationStorage = JSON.stringify(stationStorage); //实际开发中在这里取出localstorage(stationStorage=localStation.stationStorage)
+
+function isExistStation(station) {
+	var f=false;
+    $.each(stationStorage, function(i, obj) {
+        if ( obj.stationId==station ) {
+           f=true;
+        }
+    })
+    return f;
+}
+
+function isOver3Comment(station) {
+	var f=false;
+    $.each(stationStorage, function(i, obj) {
+        if (station == obj.stationId) {
+            if (obj.count >= 3) {
+                 f=true;
+            }
+        }
+    })
+    return f;
+}
+
+var load_flag;
+function loadToJudge(station) {
+
+    var _isExistStation = isExistStation(station);
+    if (_isExistStation) {
+        var _isOver3Comment = isOver3Comment(station);
+        if (_isOver3Comment) {
+            load_flag = 1;
+        } else {
+            load_flag = 0;
+        }
+    } else {
+ 		load_flag = 0;
+    }
+}
+//页面打开首先要取出站名，然后再判断该油站是否位置评论超过三次，然后得出flag=1 or 0，再发起ajax请求获取问题。
+//问题提交，要更新localstorage.stationStorage,count++或者push new station；
+var station=1;
+$(document).ready(function() {
+    loadToJudge(station);
+});
+</script>
+
+</html>

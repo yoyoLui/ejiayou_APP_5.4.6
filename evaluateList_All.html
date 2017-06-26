@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>全部评价</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script src="https://img.ejiayou.com/wxmp/zepto.min.js"></script>
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta charset="utf-8" />
+    <style>
+    .noMoreContent {
+        height: 3rem;
+        width: 100%;
+        text-align: center;
+        line-height: 3rem;
+        font-size: 1.1rem;
+        color: rgba(12,17,19,0.45);
+        background-color: white;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="containerDiv">
+        
+
+        <div class="evaluateContent" id="evaluateContent">
+
+            <!-- <img src="img/tag.png" class="userHead"></img>
+            <div class="content">
+                <div class="userName"><span>小月半</span><span>3月12日</span></div>
+                <div class="contentWord">大家都说好，能自动识别油枪和金额就更方便了呵呵
+                </div>
+                <div class="contentReply">小易回复：感谢亲们的支持，我们会不断提升服务，为顾客带来更好的体验！有任何问题您可以拨打我们的客服热线0000-0000-0000</div>
+                <div class="contentReply">小易回复：感谢亲们的支持，我们会不断提升服务，为顾客带来更好的体验！有任何问题您可以拨打我们的客服热线0000-0000-0000</div>
+            </div>
+            -->
+        </div>
+    </div>
+</body>
+<script>
+var _nextPage = 1;
+
+var json = {
+    "code": "200",
+    "data": {
+        "evaluates": [
+            {
+                "content": "比滴滴贵好多",
+                "createTime": "6月18日",
+                "evaluateId": 3340129,
+                "headUrl": "",
+                "nickName": "13*******67",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，感谢您的支持，各油站优惠有差异，详情可查看APP油站列表哦。后期我们会推出更多优惠活动哦，请持续关注我们的公众号。要是有任何疑问您都可以拨打我们的客服热线：400-8396-555！欢迎再次光临！",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "什么都没的送",
+                "createTime": "6月12日",
+                "evaluateId": 3304654,
+                "headUrl": "https://wx.qlogo.cn/mmopen/hiboQ6e7icNXRrX9l74aZ08v4t8iawxX0nicwAmsSZyYn40UgMJTneO3GYY5NTdm4bULa5Vk9kwJO8fHLibr4AOffuv7icoQibAeKk5/0",
+                "nickName": "17*******07",
+                "replylist": [
+                    {
+                        "appendConent": "亲，感谢您对小易的支持！小易跟油站确认过，本油站享受了专车优惠之后没有赠品，很抱歉给您造成的不便，还请您多多谅解！欢迎下次光临！",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": " |1|人l.入|l|人l.入i!",
+                "createTime": "6月1日",
+                "evaluateId": 3244148,
+                "headUrl": "https://wx.qlogo.cn/mmopen/hiboQ6e7icNXRrX9l74aZ08v4t8iawxX0nicwAmsSZyYn40UgMJTneO3GYY5NTdm4bULa5Vk9kwJO8fHLibr4AOffuv7icoQibAeKk5/0",
+                "nickName": "18*******22",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，请问是否出现了什么问题呢？能否将具体情况告知小易呢？24小时客服热线：400-8396-555.",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    },
+                    {
+                        "appendConent": "点错了",
+                        "appendTitle": "追加评论：",
+                        "evaluateId": 0,
+                        "type": 3
+                    }
+                ]
+            },
+            {
+                "content": "打票的是大爷",
+                "createTime": "5月23日",
+                "evaluateId": 3186935,
+                "headUrl": "https://wx.qlogo.cn/mmopen/U6Licdvc1konjqBXeNf5aSYcKfCYvkBic48P5WvUalWiatxFLC0mKRZeZ8vgBHLHicQSlgpGmEjE0MhEL4g9VsytceGlhMCouUNd/0",
+                "nickName": "13*******03",
+                "replylist": [
+                    {
+                        "appendConent": "亲，很抱歉没能给您提供满意的服务！我们会将您的意见第一时间反馈给油站！有任何问题您也可以拨打我们的客服热线：400-8396-555. 小易也希望您能继续支持我们，一起见证我们的成长!",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "开票还把易加油优惠的金额减掉",
+                "createTime": "4月26日",
+                "evaluateId": 3002604,
+                "headUrl": "https://wx.qlogo.cn/mmopen/9vEpcdmibnoXct5bfm8iagZ4vfg8Ond2ibuNGhNyvS4hTiaFqfvYs4aOgYRd2LwMehiaCvD1ickMhr8H9vxTrNzuiaibLrVw1bhG9dm6/0",
+                "nickName": "13*******64",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，油站给你优惠的金额不纳入发票的金额上，易加油给您的优惠是有纳入的哦。要是有任何疑问您都可以拨打我们的客服热线：400-8396-555！欢迎再次光临！",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "好好好好好好好好好好好好好好",
+                "createTime": "4月19日",
+                "evaluateId": 2952712,
+                "headUrl": "https://wx.qlogo.cn/mmopen/9vEpcdmibnoXct5bfm8iagZ4vfg8Ond2ibuNGhNyvS4hTiaFqfvYs4aOgYRd2LwMehiaCvD1ickMhr8H9vxTrNzuiaibLrVw1bhG9dm6/0",
+                "nickName": "13*******63",
+                "replylist": [
+                    {
+                        "appendConent": "谢谢您的支持，欢迎您继续使用易加油哦。",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "不能用支付宝付款 差",
+                "createTime": "4月16日",
+                "evaluateId": 2928849,
+                "headUrl": "https://wx.qlogo.cn/mmopen/9vEpcdmibnoXct5bfm8iagZ4vfg8Ond2ibuNGhNyvS4hTiaFqfvYs4aOgYRd2LwMehiaCvD1ickMhr8H9vxTrNzuiaibLrVw1bhG9dm6/0",
+                "nickName": "13*******63",
+                "replylist": [
+                    {
+                        "appendConent": "亲，很抱歉没能给您提供满意的服务！我们会将您的意见第一时间反馈给油站！有任何问题您也可以拨打我们的客服热线：400-8396-555. 小易也希望您能继续支持我们，一起见证我们的成长! ",
+                        "appendTitle": "运营经理小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "其他不说，连个那发票也不给我。加油小票也没有，晕！送了一盒纸巾还是给中差评。",
+                "createTime": "4月8日",
+                "evaluateId": 2864494,
+                "headUrl": "https://wx.qlogo.cn/mmopen/Q3auHgzwzM51rKXtgWGcfvpIKTQdXx61ic6kYvyQdQpU682Y5s3xv48M0jdAaZ74KNSOicADo2VD5m67klsibAlAOpAOVlOE6pK4rZ5t2Usns4/0",
+                "nickName": "13*******90",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，感谢您的支持哦，如果我们有什么不足，还望您提出建议哦。\n",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "哎呀哎呀哎呀哎呀",
+                "createTime": "4月5日",
+                "evaluateId": 2846510,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "18*******97",
+                "replylist": []
+            },
+            {
+                "content": "优惠太低了……",
+                "createTime": "3月28日",
+                "evaluateId": 2781378,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "15*******78",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，感谢您的支持，各油站优惠有差异，详情可查看APP油站列表哦。后期我们会推出更多优惠活动哦，请持续关注我们的公众号。",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "没有优惠，一分钱优惠没有用，",
+                "createTime": "3月21日",
+                "evaluateId": 2736888,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "17*******52",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，感谢您的支持，各油站优惠有差异，详情可查看APP油站列表哦。后期我们会推出更多优惠活动哦，请持续关注我们的公众号。",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    },
+                    {
+                        "appendConent": "没有优惠，油差",
+                        "appendTitle": "追加评论：",
+                        "evaluateId": 0,
+                        "type": 3
+                    }
+                ]
+            },
+            {
+                "content": "不给发票!!",
+                "createTime": "3月15日",
+                "evaluateId": 2698364,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******30",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，是可以打发票的哦，您下次在输入金额的下方选择我要发票，然后输入抬头，支付完成之后就可以去收银台领取发票了哦。",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "还有纸巾送，不错哦",
+                "createTime": "3月15日",
+                "evaluateId": 2697083,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******92",
+                "replylist": []
+            },
+            {
+                "content": "感觉态度不好，",
+                "createTime": "3月14日",
+                "evaluateId": 2691124,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "15*******22",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，很抱歉对您造成了困扰，我们会将您的建议反馈给油站负责人，感谢您的支持，欢迎您再次光临哦。有任何问题您也可以拨打我们的客服热线：400-8396-555. ",
+                        "appendTitle": "运营经理小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    },
+                    {
+                        "appendConent": "亲，您好，很抱歉对您造成了困扰，我们会将您的建议反馈给油站负责人，感谢您的支持，欢迎您再次光临哦。有任何问题您也可以拨打我们的客服热线：400-8396-555. ",
+                        "appendTitle": "运营经理小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    },
+                    {
+                        "appendConent": "亲，您好，很抱歉对您造成了困扰，我们会将您的建议反馈给油站负责人，感谢您的支持，欢迎您再次光临哦。有任何问题您也可以拨打我们的客服热线：400-8396-555. ",
+                        "appendTitle": "运营经理小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "服务员服务太差了，沒问清楚就加满了。",
+                "createTime": "3月11日",
+                "evaluateId": 2674895,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******30",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，非常抱歉，我们会督促油站改善服务质量！希望您能一直支持我们，一起见证我们的成长哦!有任何问题您也可以拨打我们的客服热线：400-8396-555。  ",
+                        "appendTitle": "运营经理小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "优惠最多的一家。只不过才去加油一次。经过那里才加",
+                "createTime": "3月7日",
+                "evaluateId": 2646704,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "15*******20",
+                "replylist": [
+                    {
+                        "appendConent": "评论搞错了。这里优惠是最少的。基本上没优惠",
+                        "appendTitle": "追加评论：",
+                        "evaluateId": 0,
+                        "type": 2
+                    }
+                ]
+            },
+            {
+                "content": "没优惠！超没用！",
+                "createTime": "3月6日",
+                "evaluateId": 2644995,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******32",
+                "replylist": []
+            },
+            {
+                "content": "：文化？丨？这！一",
+                "createTime": "3月6日",
+                "evaluateId": 2644610,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "15*******27",
+                "replylist": [
+                    {
+                        "appendConent": "拒绝开发票",
+                        "appendTitle": "追加评论：",
+                        "evaluateId": 0,
+                        "type": 2
+                    }
+                ]
+            },
+            {
+                "content": "没有发票开的",
+                "createTime": "3月1日",
+                "evaluateId": 2613781,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******42",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，很抱歉没能给您提供满意的服务！我们会将您的意见收集并反馈给油站经理！有任何问题您也可以拨打我们的客服热线：400-8396-555.",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    },
+                    {
+                        "appendConent": "好",
+                        "appendTitle": "追加评论：",
+                        "evaluateId": 0,
+                        "type": 3
+                    }
+                ]
+            },
+            {
+                "content": "不错，有优惠就行",
+                "createTime": "2月26日",
+                "evaluateId": 2595986,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******92",
+                "replylist": []
+            },
+            {
+                "content": "这个邮费优惠的价格不是太多－总的来说一般把送的两瓶水　",
+                "createTime": "2月20日",
+                "evaluateId": 2557459,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******69",
+                "replylist": []
+            },
+            {
+                "content": "加油员太差xxxxxxxx",
+                "createTime": "2月17日",
+                "evaluateId": 2536035,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******40",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，感谢您的反馈，我们会将反馈送达油站经理，谢谢您的支持。",
+                        "appendTitle": "小易回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "没有优费等于",
+                "createTime": "2月13日",
+                "evaluateId": 2512337,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******90",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，感谢您的支持，公众号上会经常推送给您优惠活动和信息，请持续关注我们公众号哦。",
+                        "appendTitle": "运营经理财财回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "第一次用易加油，感觉还不错",
+                "createTime": "2月12日",
+                "evaluateId": 2503817,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******48",
+                "replylist": []
+            },
+            {
+                "content": "不能开票不能开票",
+                "createTime": "2月6日",
+                "evaluateId": 2470777,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "18*******79",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好， 是可以开票的哦，您如果选择开票就享受不了那么高的优惠了哟。",
+                        "appendTitle": "运营经理财财回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "服务态度一般了沙",
+                "createTime": "1月23日",
+                "evaluateId": 2410343,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******16",
+                "replylist": []
+            },
+            {
+                "content": "不给打发票，基本没优惠",
+                "createTime": "1月16日",
+                "evaluateId": 2358181,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******82",
+                "replylist": [
+                    {
+                        "appendConent": "亲，您好，确实给您优惠到了哦，您上一笔加了23.8升的油，实际支付了145.24元，国家油价是6.57，您每升的加油价是6.1哦",
+                        "appendTitle": "运营经理财财回复：",
+                        "evaluateId": 0,
+                        "type": 4
+                    }
+                ]
+            },
+            {
+                "content": "居然不给开发票，太址蛋了",
+                "createTime": "1月8日",
+                "evaluateId": 2298213,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******98",
+                "replylist": []
+            },
+            {
+                "content": "优惠太少不算优惠",
+                "createTime": "1月3日",
+                "evaluateId": 2252388,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******44",
+                "replylist": []
+            },
+            {
+                "content": "油量不够，我到别的加油站加150都有这么多",
+                "createTime": "12月31日",
+                "evaluateId": 2234265,
+                "headUrl": "https://wx.qlogo.cn/mmopen/tvcMibHqm5bvRDNGZR4qfEjU4ibJb4FkMuNXk3zDWnw7hnzVSTbgQHBM7xdHmAMHR4Qq2y2KrE1msdtFZWE3Ajcib3RqIHNUFXj/0",
+                "nickName": "13*******18",
+                "replylist": []
+            }
+        ],
+        "more": 1,
+        "total": 281
+    },
+    "message": "成功",
+    "severStatus": 1
+}
+var severStatus = 1;
+
+function ajaxData() {
+
+    $.ajax({
+        url: "http://dev.ejiayou.com/v1/evaluate/queryAllEvaluateList.do",
+        type: "POST",
+
+        data: {
+            orderId: 100021212,
+            stationId: 12,
+            osType: 2,
+            userId: 1005020,
+            versionId: '5.4.0',
+            carType: 1,
+            nextPage: _nextPage //页码从1开始
+        },
+        success: function(data) {
+
+        }
+    });
+
+    if (severStatus == 1) { 
+        //开发测试模式下，将json翻倍；实际调用中需要从ajax返回data获取
+        var a = json.data.evaluates;
+        json.data.evaluates.push.apply(json.data.evaluates, a);
+        //循环评论详情列表
+        $.each(json.data.evaluates, function(i, obj) {
+            $('#evaluateContent').show();
+            $('#evaluateContent').append('<img src=' + obj.headUrl + ' class="userHead"></img>' + '<div class="content" id="content' + i + '">' + '<div class="userName"><span>' + obj.nickName + '</span><span>' + obj.createTime + '</span></div>' + '<div class="contentWord">' + obj.content + '</div>' + '</div>');
+            $.each(obj.replylist, function(childI, childObj) {
+                $('#content' + i).append(' <div class="contentReply">' + childObj.appendTitle + childObj.appendConent + '</div>');
+            })
+        })
+    } else {//滚动没有返回数据
+        $('.containerDiv').append('<div class="noMoreContent">没有更多评论加载了</div>');
+    }
+
+}
+//滚动自动加载，给document绑定滚动事件
+var imgIntevel, isScrollAble = true;
+$(document).bind("touchmove scroll", function() {
+    //如果滚动到底部
+    if (isScrollAble && reachBottom()) {
+        _nextPage++;
+        ajaxData();
+    }
+});
+
+function reachBottom() {
+    var scrollTop = 0;
+    var clientHeight = 0;
+    var scrollHeight = 0;
+    if (document.documentElement && document.documentElement.scrollTop) {
+        scrollTop = document.documentElement.scrollTop;
+    } else if (document.body) {
+        scrollTop = document.body.scrollTop;
+    }
+    if (document.body.clientHeight && document.documentElement.clientHeight) {
+        clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+    } else {
+        clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+    }
+    scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    if (scrollTop + clientHeight >= (scrollHeight - 100)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+$(document).ready(function() {
+
+    ajaxData();
+
+})
+document.body.addEventListener('touchstart', function() {});
+</script>
+
+</html>

@@ -1,0 +1,191 @@
+1、支付完成-获取随机评论接口
+http://dev.ejiayou.com/v1/comment/getEvaluateInfo.do?orderId=100021212&flag=1
+ 
+flag = 1: 当前用户在当前油站选择位置次数少于等于3次
+flag = 0: 当前用户在当前油站选择位置次数大于3次
+ 
+返回结果
+{
+ "code":200,
+ "message":"查询成功",
+ "data":{
+	"evaluateQuestionInfo":{
+		"gradeList":[
+			{
+				"grade":"5",
+				"gradeName":"满意"
+			},
+			{
+				"grade":"3",
+				"gradeName":"一般"
+			},
+			{
+				"grade":"1",
+				"gradeName":"不满意"
+			}
+		],
+		"questionDes":"您认为油站的环境如何",
+		"questionId":"2",
+		"type":"2",
+		"typeName":"环境"
+	},
+	"oilCode":"92#",
+	"oilMass":"100L",
+	"orderSum":"1000",
+	"paySum":"900",
+	"reduceSum":"100",
+	"stationId":"65"
+	"stationName":"会员卡测试油站"
+}
+}
+
+
+2、支付完成-获取评论接口
+https://dev.ejiayou.com/v1/comment/getAllCommentList.do?orderId=100021212
+
+返回结果:
+ {
+ "code":200,
+"message":"查询成功",
+ "data":{
+	"stationId":"65"	
+	"commentDetail":{
+		"commentList":[
+			{
+				"appendConent":" 么鬼啊",
+				"appendTitle":"追加评价:",
+				"evaluateId":1,
+				"type":3
+			},
+			{
+				"appendConent":"鬼啊",
+				"appendTitle":"追加评价:",
+				"evaluateId":2,
+				"type":3
+			},
+			{
+				"appendConent":"讲文明树新风",
+				"appendTitle":"小易回复:",
+				"evaluateId":3,
+				"type":4
+			}
+		],
+		"commentTime":"5月3日",
+		"content":"什么鬼啊",
+		"headUrl":"https://www.xxx.xxx.png",
+		"nickName":"小胖"
+	},
+	"commentList":[
+		{
+			"questionId":"1",
+			"typeName":"服务",
+			"questionComment":"一般"
+		}
+	],
+	"unCommentList":[
+		{
+			"gradeList":[
+				{
+					"grade":"5",
+					"gradeName":"较好"
+				},
+				{
+					"grade":"3",
+					"gradeName":"一般"
+				},
+				{
+					"grade":"1",
+					"gradeName":"较差"
+				}
+			],
+			"questionId":"2",
+			"type":"2",
+			"typeName":"环境"
+		},
+		{
+			"gradeList":[
+				{
+					"grade":"5",
+					"gradeName":"较好"
+				},
+				{
+					"grade":"3",
+					"gradeName":"一般"
+				},
+				{
+					"grade":"1",
+					"gradeName":"不太好找"
+				}
+			],
+			"questionId":"3",
+			"type":"3",
+			"typeName":"位置"
+		}
+	]
+}
+}
+
+
+3、提交评论、追加评论
+http://dev.ejiayou.com/v1/evaluate/commitEvaluation.do
+
+post参数:
+	ser_point:4           //如果不需要保存的 ，分数传-1
+	loc_point:3
+	oil_point:4
+	env_point:5
+	type:1                //是否为第一次评论，是为1，否则为2
+	comment:不错不错
+	order_id:1000000000236946      
+
+返回结果:
+	{
+		"code":"200",
+		"message":"成功",
+		"data":{
+			"reg":"0",
+			"msg":"成功！"
+		},
+		"severStatus":1
+	}
+
+4、全部评论页面
+http://dev.ejiayou.com/v1/evaluate/queryAllEvaluateList.do
+
+post参数
+	{
+		stationId:9728,
+		osType:2,
+		userId:1005020,
+		versionId:5.4.0,
+		carType:1,
+		nextPage:1 //页码从1开始
+	}
+
+返回结果
+{
+    "code":"200",
+    "data":{
+        "evaluates":[
+            {
+                "content":"gjjjvvv said that",
+                "createTime":"05-25",
+                "evaluateId":1301978,
+                "headUrl":"https://www.baidu.com/",
+                "replylist":[
+                    {
+                        "appendConent":"的发送方式",
+                        "appendTitle":"易加油回复：",
+                        "evaluateId":0,
+                        "type":4
+                    }
+                ],
+                "nickName":"黄土蛋"
+            }
+        ],
+        "more":1,
+        "total":25
+    },
+    "message":"成功",
+    "severStatus":1
+}
